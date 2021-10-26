@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Black Jack</title>
+
+    <style>
+
+        html, body, main {
+            height: 100%;
+            width: 100%;
+        }
+
+        .card {
+            display: inline-block;
+            height: 10%;
+            width: 5%;
+            background-color: aliceblue;
+            border-radius: 10px;
+            border: 3px solid black;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="http://dvfu.ru" target="_blank" rel="noopener noreferrer">DVFU</a>
+    </header>
+    <main id="main">
+    </main>
+    <footer>
+        @ Copyright We 2021
+    </footer>
+
+    <script>
+        function create_card(suit, value) {
+            return {
+                suit: suit,
+                value: value
+            }
+        }
+
+        function create_deck() {
+            var deck = [];
+            for (var i = 0; i < 4; i++) {
+                for (var j = 0; j <13; j++) {
+                    deck.push(create_card(i, j));
+                }
+            }
+            return deck;
+        }
+
+        var deck = create_deck();
+
+        for (card of deck) {
+            console.log(card);
+            var cardElement = document.createElement('div');
+            cardElement.className = 'card';
+            cardElement.innerHTML = `${card.suit} : ${card.value}`;
+            document.getElementById("main").appendChild(cardElement);
+        }    
+        console.log(deck);
+
+    </script>
+
+</body>
+</html>

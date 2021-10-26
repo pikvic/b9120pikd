@@ -26,6 +26,7 @@
         <a href="http://dvfu.ru" target="_blank" rel="noopener noreferrer">DVFU</a>
     </header>
     <main id="main">
+        <button onclick="give_card()">Take Card</button>
     </main>
     <footer>
         @ Copyright We 2021
@@ -42,7 +43,7 @@
         function create_deck() {
             var deck = [];
             for (var i = 0; i < 4; i++) {
-                for (var j = 0; j <13; j++) {
+                for (var j = 0; j < 13; j++) {
                     deck.push(create_card(i, j));
                 }
             }
@@ -51,14 +52,14 @@
 
         var deck = create_deck();
 
-        for (card of deck) {
-            console.log(card);
+        function give_card() {
+            card = deck.pop();
+            if (!card) return;
             var cardElement = document.createElement('div');
             cardElement.className = 'card';
             cardElement.innerHTML = `${card.suit} : ${card.value}`;
             document.getElementById("main").appendChild(cardElement);
-        }    
-        console.log(deck);
+        }
 
     </script>
 
